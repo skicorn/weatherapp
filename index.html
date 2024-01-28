@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự báo thời tiết của chó trâm</title>
+    <link rel="stylesheet" href="/layout/css/style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="search">
+           <input type="text" placeholder="Nhập tên tỉnh của mày" spellcheck="false" id="name">
+           <button><img src="/layout/image/iconsearch.png"></button>
+        </div>
+        <h1 class="error">abc</h1>
+        <div class="weather">
+            <img src="" class="weather-icon">
+         <div class="descrip">
+            <h1 class="city"></h1>
+            <h1 class="temp"></h1>
+        </div>
+        </div>
+    </div>
+    <script>
+        const key = "https://api.weatherapi.com/v1/current.json?key=a0f5f6cae2994bcebb750557242801&q=";
+        const search = document.querySelector(".search input");
+        const pic = document.querySelector(".weather-icon");
+        const tempe = document.querySelector(".temp");
+        const searchBtn = document.querySelector(".search button");
+        var cityInput = document.getElementById("name").value;
+        async function checkWeather(city) {
+           const response = await fetch(key + city);
+           var data = await response.json();
+           if(data.error)
+           {
+             var err = document.querySelector(".error");
+             err.innerHTML = "CON TRÂM ĐIÊN NHẬP SAI RỒI";
+             err.style.display = "block";
+             return;
+           }
+           else
+           {
+               document.querySelector(".city").innerHTML = data.location.name;
+               tempe.innerHTML=data.current.temp_c;
+               var temp = data.current.temp_c;
+               if(temp > 25) {
+                 pic.src = "layout/image/sunnymelon.png"
+               }
+               else if (temp > 10){
+                pic.src = "layout/image/meloncokld.png";
+               }
+               else if (temp <0){pic.src = "layout/image/melonsnow.png";}
+               var card = document.querySelector(".weather");
+               card.style.display = "block";
+           }
+        }
+        searchBtn.addEventListener("click", ()=>{
+        checkWeather(search.value);
+        }) 
+      </script>
+</body>
+</html>

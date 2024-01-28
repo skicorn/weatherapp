@@ -1,0 +1,70 @@
+body {
+    background-image: url(/layout/image/background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+@font-face {
+    font-family: myFONT;
+    src: url(/font/fontsvn.ttf);
+}
+.content {
+    width: 19em;
+    border-radius: 1em;
+    background-color: white;
+    display: flex;
+    margin: 15em auto 0;
+    text-align: center;
+    padding: 3em;
+    font-family: myFONT;
+    flex-direction: column;
+}
+.search{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+}
+.search input{
+    height: 4em;
+    border-radius: 30px;
+    flex: 1;
+    outline: 0;
+    border: 0;
+    background-color: #599200;
+    color: white;
+    padding-left: 20px;
+    font-family: myFONT;
+}
+input::placeholder {
+    color: white;
+}
+.search button{
+    border-radius: 50%;
+    border: 0;
+    height: 4em;
+    width: 4em;
+    align-items: center;
+    justify-content: center;
+}
+.search button img{
+    height: 3em;
+    width: 3em;
+}
+.weather{
+    margin-top: 3em;
+    display: none;
+}
+.weather img{
+    height: 7em;
+    width: 7em;
+}
+.descrip{
+    display: grid;
+}
+.error{
+    font-size: 2em;
+    margin: 0;
+    padding-top: 1em;
+    display: none;
+}
